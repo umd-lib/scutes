@@ -1,14 +1,12 @@
 import hashlib
 import logging
 import mailbox
-import os
 import re
-import requests
-
-from bs4 import BeautifulSoup
-from email.header import decode_header
+from email.header import decode_header, make_header
 from email.utils import parsedate_to_datetime
 
+import requests
+from bs4 import BeautifulSoup
 from django.core.files.base import ContentFile
 
 from processing.models import Batch, File, Item
@@ -138,6 +136,10 @@ def is_pool_report(html: str) -> bool:
     return True
 
 
+def decode_header_string(header: str) -> str:
+    return str(make_header(decode_header(header)))
+
+
 def load_data(file_path, batch_id):
     batch = Batch(id=batch_id)
     logger.debug(f'Batch ID: {batch_id}')
@@ -152,17 +154,11 @@ def load_data(file_path, batch_id):
         logger.debug(date)
 
         # Reporter
-        From, encoding = decode_header(message['From'])[0]
-        if isinstance(From, bytes):
-            From = From.decode(encoding)
-        item.reporter = process_reporter(From)
+        item.reporter = process_reporter(decode_header_string(message['From']))
         logger.debug(item.reporter)
 
         # Title
-        subject, encoding = decode_header(message['Subject'])[0]
-        if isinstance(subject, bytes):
-            subject = subject.decode(encoding)
-        item.title = scrub_title(subject)
+        item.title = scrub_title(decode_header_string(message['Subject']))
         logger.debug(item.title)
 
         # Body

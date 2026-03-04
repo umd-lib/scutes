@@ -1,6 +1,7 @@
 import pytest
 
-from src.processing.common.load_mbox_data import is_pool_report, process_reporter, scrub_title, scrub_body
+from src.processing.common.load_mbox_data import is_pool_report, process_reporter, scrub_title, scrub_body, \
+    decode_header_string
 
 
 @pytest.mark.parametrize(
@@ -101,3 +102,14 @@ NONPOOL_REPORT_EXAMPLES = [
     We are writing ...
     '''
 ]
+
+
+@pytest.mark.parametrize(
+    ('raw_header_string', 'expected_string'),
+    [
+        ('Simple', 'Simple'),
+        ('Advertising Request =?utf-8?Q?for=C2=A0whca=2Epress?=', 'Advertising Request for\xa0whca.press'),
+    ]
+)
+def test_decode_header_string(raw_header_string, expected_string):
+    assert decode_header_string(raw_header_string) == expected_string
