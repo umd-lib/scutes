@@ -9,7 +9,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
 ]
 dependencies = [
-    "asgiref==3.7.2",
+    "asgiref==3.11.1",
     "attrs==23.1.0",
     "beautifulsoup4==4.12.2",
     "certifi==2023.5.7",
@@ -18,7 +18,7 @@ dependencies = [
     "crispy-bootstrap5==0.7",
     "cryptography==42.0.2",
     "defusedxml==0.7.1",
-    "Django==5.0.14",
+    "Django==5.1.15",
     "django-auto-logout==0.5.1",
     "django-bootstrap5==23.3",
     "django-crispy-forms==2.0",
