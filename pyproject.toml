@@ -18,7 +18,7 @@ dependencies = [
     "crispy-bootstrap5==0.7",
     "cryptography==42.0.2",
     "defusedxml==0.7.1",
-    "Django==5.1.15",
+    "Django==5.2.15",
     "django-auto-logout==0.5.1",
     "django-bootstrap5==23.3",
     "django-crispy-forms==2.0",
