@@ -206,7 +206,7 @@ without error.
 3.5) Return to the "Batch List" page by left-clicking the "Batch List" link
 in the navigation bar.
 
-3.6) On the "Batch List" page, left-click the "Open" button for the "2022-02"
+3.6) On the "Batch List" page, left-click the "Open" button for the "2022-10"
 entry in the table. The "Item List" page will be displayed.
 
 ### 4) Item List Page
