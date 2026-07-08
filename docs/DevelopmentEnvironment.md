@@ -7,7 +7,7 @@ on a local workstation.
 
 ## Prerequisites
 
-* Python 3.11
+* Python 3.14
 
 * Install `libxmlsec1`. This is required for SAML authentication using
   [djangosaml2].

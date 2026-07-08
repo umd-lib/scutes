@@ -102,7 +102,7 @@ p_charset = re.compile(r'charset=[a-zA-Z0-9-]+')
 def scrub_body(html: str) -> str:
     # Scrub specific string values
     for old, new in body_scrub:
-        html = re.sub(old, new, html, re.DOTALL)
+        html = re.sub(old, new, html, flags=re.DOTALL)
         logger.debug(f'body: scrubbed "{old}"')
     # Update the charset since we have convert to utf-8
     html = p_charset.sub('charset=utf-8', html)
